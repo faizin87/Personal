@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="pakizinModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="tbl_ability">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="250" />
+    <Property Name="Description" Type="text" />
+  </EntityType>
+  <EntityType Name="tbl_education">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Scala" Type="varchar" MaxLength="20" />
+    <Property Name="Description" Type="text" />
+  </EntityType>
+  <EntityType Name="tbl_experience">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Scala" Type="varchar" MaxLength="100" />
+    <Property Name="Place" Type="varchar" MaxLength="100" />
+    <Property Name="Description" Type="text" />
+  </EntityType>
+  <EntityType Name="tbl_portfolio">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Groupping" Type="varchar" MaxLength="250" />
+    <Property Name="Name" Type="varchar" MaxLength="250" />
+    <Property Name="link" Type="varchar" MaxLength="250" />
+    <Property Name="photo" Type="varchar" MaxLength="250" />
+  </EntityType>
+  <EntityType Name="tbl_post">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="varchar" MaxLength="150" />
+    <Property Name="Date" Type="datetime" />
+    <Property Name="User_id" Type="int" />
+    <Property Name="Content" Type="text" />
+  </EntityType>
+  <EntityType Name="tbl_skill">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="250" />
+    <Property Name="Score" Type="int" />
+  </EntityType>
+  <EntityType Name="tbl_user">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FirstName" Type="varchar" MaxLength="250" />
+    <Property Name="LastName" Type="varchar" MaxLength="250" />
+    <Property Name="FullName" Type="varchar" MaxLength="250" />
+    <Property Name="Description" Type="text" />
+    <Property Name="email" Type="varchar" MaxLength="100" />
+    <Property Name="password" Type="varchar" MaxLength="100" />
+    <Property Name="photo" Type="varchar" MaxLength="250" />
+  </EntityType>
+  <Association Name="FK__tbl_post__User_i__1DE57479">
+    <End Role="tbl_user" Type="Self.tbl_user" Multiplicity="0..1" />
+    <End Role="tbl_post" Type="Self.tbl_post" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_user">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="tbl_post">
+        <PropertyRef Name="User_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="pakizinModelStoreContainer">
+    <EntitySet Name="tbl_ability" EntityType="Self.tbl_ability" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_education" EntityType="Self.tbl_education" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_experience" EntityType="Self.tbl_experience" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_portfolio" EntityType="Self.tbl_portfolio" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_post" EntityType="Self.tbl_post" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_skill" EntityType="Self.tbl_skill" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_user" EntityType="Self.tbl_user" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__tbl_post__User_i__1DE57479" Association="Self.FK__tbl_post__User_i__1DE57479">
+      <End Role="tbl_user" EntitySet="tbl_user" />
+      <End Role="tbl_post" EntitySet="tbl_post" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

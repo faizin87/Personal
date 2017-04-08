@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="05e032ceb6a5421db40b021cb9a3a243" Name="Diagram1" ZoomLevel="74">
+        <EntityTypeShape EntityType="pakizinModel.tbl_ability" Width="1.5" PointX="0.75" PointY="4.75" />
+        <EntityTypeShape EntityType="pakizinModel.tbl_education" Width="1.5" PointX="2.75" PointY="4.75" />
+        <EntityTypeShape EntityType="pakizinModel.tbl_experience" Width="1.5" PointX="4.75" PointY="4.75" />
+        <EntityTypeShape EntityType="pakizinModel.tbl_portfolio" Width="1.5" PointX="5.75" PointY="0.75" />
+        <EntityTypeShape EntityType="pakizinModel.tbl_post" Width="1.5" PointX="3" PointY="1.25" />
+        <EntityTypeShape EntityType="pakizinModel.tbl_skill" Width="1.5" PointX="6.75" PointY="3.75" />
+        <EntityTypeShape EntityType="pakizinModel.tbl_user" Width="1.5" PointX="0.75" PointY="1" />
+        <AssociationConnector Association="pakizinModel.FK__tbl_post__User_i__1DE57479" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

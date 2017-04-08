@@ -1,0 +1,524 @@
+﻿@using Pakizin.Helpers
+@model PagedList.IPagedList<Pakizin.Models.tbl_post>
+@using PagedList.Mvc;
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Mirrored from tahsinscreation.com/mysite/resumate-updated/index-particle.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 25 Mar 2017 17:31:19 GMT -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="RezuMate is a personal portfolio HTML template with clean and elegant design">
+    <meta name="keywords" content="bootstrap,clean,cv,minimal,onepage particle,personal,portfolio,resume,vcard ">
+    <title>Faizin Website</title>
+    <!--css styles-->
+    <link rel="stylesheet" href="~/Content/Themes/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/Content/Themes/css/font-awesome.min.css">
+    <link rel="stylesheet" href="~/Content/Themes/css/lightbox.css">
+    <link href="https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <link rel="stylesheet" href="~/Content/Themes/css/owl.carousel.css">
+    <link rel="stylesheet" href="~/Content/Themes/css/owl.theme.css">
+    <link rel="stylesheet" href="~/Content/Themes/css/slicknav.min.css">
+    <link rel="stylesheet" href="~/Content/Themes/css/reset.css">
+    <link rel="stylesheet" href="~/Content/Themes/css/dashboardstyle.css">
+    <link rel="stylesheet" href="~/Content/Themes/css/responsive.css">
+    <link rel="stylesheet" href="~/Content/Themes/css/animate.min.css">
+    <!---title logo icon-->
+    <link rel="shortcut icon" href="images/favicon.ico" />
+    <script type="text/javascript" src="~/Content/Themes/js/respond.js"></script>
+    
+</head>
+<body onload="startTime()">
+    <!-- Start Preloader -->
+    <div class="preloader">
+        <div class="preloader-img"></div>
+    </div>
+    <!-- End Preloader -->
+    <!-- Start scroll-top button -->
+    <div id="scroll-top-area">
+        <a href="#slider-portion"><i class="fa fa-angle-double-up" aria-hidden="true"></i></a>
+    </div>
+    <!-- End scroll-top button -->
+    <!--Start Header-->
+    <header>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <label id="greet"></label>, @DateTime.Now.ToString("dd MMMM yyyy", new System.Globalization.CultureInfo("id-ID")) <label id="txt"></label>
+                </div>
+                <div class="col-md-8">
+                    <nav class="menu single-page-nav" id="menu">
+                        <ul>
+                            <li><a class="home" href="#welcome-area">Beranda</a></li>
+                            <li><a href="#about">Profil</a></li>
+                            <li><a href="#services">keahlian</a></li>
+                            <li><a href="#portfolio">Pekerjaan</a></li>
+                            <li><a href="#blog">Blog</a></li>
+                        </ul>
+                    </nav>
+                </div>
+                
+            </div>
+        </div>
+    </header>
+
+    <!--End Header-->
+    <!--Start Welcome Section-->
+    <section class="welcome-area particle-bg" id="welcome-area" data-stellar-background-ratio="0.6" data-stellar-vertical-offset="2500">
+        <div id="particles-js"></div>
+        <div class="welcome-text">
+            <h6>Saya @ViewBag.name</h6>
+            <div class="element"></div>
+        </div>
+    </section>
+    <!--End Welcome Section-->
+    <!--Start About Section-->
+    <section class="about padding-style1" id="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-5 col-md-12 col-sm-12">
+                    <div class="about-img">
+                        <img src="~/Content/Themes/images/administrator.png" alt="" class="about-img img-responsive">
+                        <div class="about-img-overlay">
+                            <div class="social-icons">
+                                <a href="https://www.facebook.com/ahmadkhoirulfaizin"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                                <a href="https://twitter.com/pak_izin"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                                <a href="https://plus.google.com/101113465068278767126"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-7">
+                    <div class="about-text">
+                        <h4 class="section-title">
+                            Tentang Saya
+                        </h4>
+                        @ViewBag.desc
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--End About Section-->
+    <!--Start Skills Section-->
+    <section class="skills" id="skills" data-stellar-background-ratio="0.6" data-stellar-vertical-offset="1700">
+        <div class="skill-container padding-style1">
+            <div class="skill-overlay padding-style1"></div>
+            <div class="skills-content">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="skill-heading-area">
+                                <h6>Keahlian Saya</h6>
+                                <h4>Membangun Aplikasi Berbasis Komputer</h4>
+                                <p>Saya pernah beberapa kali membangun aplikasi baik berbasis desktop maupun berbasis web. Beberapa diantaranya dapat dilihat di daftar portofolio saya</p>
+                                <a href="#portfolio" class="btn-style2 skill-btn">Lihat Portofolio</a>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="progressbar-area">
+                                @foreach (var item in ViewBag.skills)
+                                {
+                                    string score = item.Score.ToString();
+                                    <p>@item.Name</p>
+                                    <div class="progress">
+                                        <div class="progress-bar prog-@item.Score.ToString()" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width:0%;">
+                                            <span>@item.Score.ToString()%</span>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--End Skills Section-->
+    <!--Start Services Section-->
+    <section class="services padding-style1" id="services">
+        <div class="services-header">
+            <h4 class="section-title">Kemampuan Yang Dapat Saya Berikan</h4>
+        </div>
+        <div class="services-content">
+            <div class="container">
+                <div class="row">
+                    @foreach (var item in ViewBag.ability)
+                    {
+                        string animation = null;
+                        string icon = null;
+                        if (item.Id.ToString() == "1" )
+                        {
+                            animation = "fadeInLeft";
+                            icon = "fa fa-commenting";
+                        }
+                        else if (item.Id.ToString() == "2")
+                        {
+                            animation = "pulse";
+                            icon = "fa fa-database";
+                        }
+                        else if (item.Id.ToString() == "3")
+                        {
+                            animation = "fadeInLeft";
+                            icon = "fa fa-laptop";
+                        }
+                        <div class="col-md-4 col-sm-4">
+                            <div class="service-item animation" data-animation="@animation">
+                                <span><i class="@icon" aria-hidden="true"></i></span>
+                                <p class="content-title">@item.Name</p>
+                                <p class="content-text">@item.Description</p>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--End Services Section-->
+    <!--Start Portfolio Section-->
+    <section class="portfolio padding-style1" id="portfolio">
+        <div class="portfolio-header">
+            <h4 class="section-title">PortoFolio Aplikasi Berbasis Web</h4>
+        </div>
+        <div class="portfolio-content">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 col-sm-12">
+                        <div class="portfolio-content-head">
+                            <ul class="controls">
+                                <li class="filter" data-filter="all">Semua</li>
+                                <li class="filter" data-filter=".eoffice">eOffice</li>
+                                <li class="filter" data-filter=".idsync">IDSync</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-12 col-sm-12 col-xs">
+                        <div class="portfolio-content-items">
+                            <div class="row">
+                                @foreach (var item in ViewBag.eoffice)
+                                {
+                                    <div class="col-md-4 col-sm-4 col-xs-12 mix eoffice">
+                                        <div class="portfolio-item">
+                                            <div class="portfolio-img">
+                                                <img src="~/Content/Themes/images/portfolio/img1.jpg" alt="@item.Name" class="img-responsive">
+                                            </div>
+                                            <div class="portfolio-overlay">
+                                                <p class="category">@item.Name</p>
+                                                <a href="@item.link" target="_blank">
+                                                    <div class="magnify-icon">
+                                                        <p><span><i class="fa fa-link" aria-hidden="true"></i></span></p>
+                                                    </div>
+                                                </a>
+                                                <a href="~/Content/Themes/images/portfolio/img1.jpg" data-lightbox="image-1">
+                                                    <div class="magnify-icon">
+                                                        <p><span><i class="fa fa-search" aria-hidden="true"></i></span></p>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                                
+                                @foreach (var item in ViewBag.idsync)
+                                {
+                                    <div class="col-md-4 col-sm-4 col-xs-12 mix idsync">
+                                        <div class="portfolio-item">
+                                            <div class="portfolio-img">
+                                                <img src="~/Content/Themes/images/portfolio/img1.jpg" alt="@item.Name" class="img-responsive">
+                                            </div>
+                                            <div class="portfolio-overlay">
+                                                <p class="category">@item.Name</p>
+                                                <a href="@item.link" target="_blank">
+                                                    <div class="magnify-icon">
+                                                        <p><span><i class="fa fa-link" aria-hidden="true"></i></span></p>
+                                                    </div>
+                                                </a>
+                                                <a href="~/Content/Themes/images/portfolio/img1.jpg" data-lightbox="image-6">
+                                                    <div class="magnify-icon">
+                                                        <p><span><i class="fa fa-search" aria-hidden="true"></i></span></p>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--End Portfolio Section-->
+    <!--Start Experience Section-->
+    <section class="experience padding-style1" id="experience">
+        <div class="experience-header">
+            <h4 class="section-title">Riwayat Pendidikan</h4>
+        </div>
+        <div class="container">
+            <div class="experience-container">
+                <div class="row">
+                    @{ int no = 1;
+                       string typeClass = null;}
+                    @foreach (var item in ViewBag.education)
+                    {
+                        if (no == 1 && ViewBag.minEdu == item.Id.ToString())
+                        {
+                            typeClass = "col-md-6 left-item";
+                        }
+                        else if (no % 2 == 0 && ViewBag.maxEdu != item.Id.ToString())
+                        {
+                            typeClass = "col-md-6 right-item experience-top-margin";
+                        }
+                        else if (no % 2 != 0 && ViewBag.maxEdu != item.Id.ToString())
+                        {
+                            typeClass = "col-md-6 left-item experience-top-margin";
+                        }
+                        else if (no % 2 == 0 && ViewBag.maxEdu == item.Id.ToString())
+                        {
+                            typeClass = "col-md-6 right-item last-item experience-top-margin";
+                        }
+                        else if (no % 2 != 0 && ViewBag.maxEdu == item.Id.ToString())
+                        {
+                            typeClass = "col-md-6 left-item last-item experience-top-margin";
+                        }
+                        <div class="@typeClass">
+                            <div class="experience-item">
+                                <div class="experience-circle"></div>
+                                <div class="experience-content">
+                                    <p class="range">@item.Scala</p>
+                                    <h6>@item.Description</h6>
+                                </div>
+                            </div>
+                        </div>
+                        no++;
+                    }
+                   
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="experience padding-style1" id="experience">
+        <div class="experience-header">
+            <h4 class="section-title">Riwayat Pekerjaan</h4>
+        </div>
+        <div class="container">
+            <div class="experience-container">
+                <div class="row">
+                    @{ int no1 = 1;
+                        string typeClass1 = null;}
+                    @foreach (var item in ViewBag.experience)
+                    {
+                        if (no1 == 1 && ViewBag.minExpe == item.Id.ToString())
+                        {
+                            typeClass1 = "col-md-6 left-item";
+                        }
+                        else if (no1 % 2 == 0 && ViewBag.maxExpe != item.Id.ToString())
+                        {
+                            typeClass1 = "col-md-6 right-item experience-top-margin";
+                        }
+                        else if (no1 % 2 != 0 && ViewBag.maxExpe != item.Id.ToString())
+                        {
+                            typeClass1 = "col-md-6 left-item experience-top-margin";
+                        }
+                        else if (no1 % 2 == 0 && ViewBag.maxExpe == item.Id.ToString())
+                        {
+                            typeClass1 = "col-md-6 right-item last-item experience-top-margin";
+                        }
+                        else if (no1 % 2 != 0 && ViewBag.maxExpe == item.Id.ToString())
+                        {
+                            typeClass1 = "col-md-6 left-item last-item experience-top-margin";
+                        }
+                        <div class="@typeClass1">
+                            <div class="experience-item">
+                                <div class="experience-circle"></div>
+                                <div class="experience-content">
+                                    <h6>@item.Place</h6>
+                                    <p class="range">@item.Scala</p>
+                                    <p>@item.Description</p>
+                                </div>
+                            </div>
+                        </div>
+                        no1++;
+                    }
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--End Experience Section-->
+    
+    <!--Start Blog-Section-->
+    <section class="blog padding-style1" id="blog">
+        <div class="blog-header">
+            <h4 class="section-title">Blog Saya</h4>
+        </div>
+        <div class="blog-content">
+            <div class="container">
+                <div class="row">
+                    @foreach (var item in Model)
+                    {
+                        <div class="col-md-4 col-sm-6">
+                            <div class="blog-single-item animation" data-animation="fadeInLeft">
+                                <div class="blog-img-area">
+                                    <img src="~/Content/Themes/images/blog/calendar.png" alt="blog" class="img-responsive">
+                                </div>
+                                <div class="blog-text-area">
+                                    <div class="blog-description">
+                                        <div class="date-area primary-bg">
+                                            <p>@item.Date.Value.ToString("dd MMMM yyyy", new System.Globalization.CultureInfo("id-ID"))</p>
+                                        </div>
+                                        <div class="blog-text">
+                                            <h6>@item.Title</h6>
+                                            <p><span><i class="fa fa-user" aria-hidden="true"></i></span>Oleh <a href="#">@item.tbl_user.FullName</a></p>
+                                            <p>@item.Content</p>
+                                            <a href="single-blog.html" class="btn-style3 read-btn">READ MORE</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                    
+                </div>
+                <div class="row">
+                    <div class="col-md-6 text-right">
+                        @{if (Model.PageCount > 1)
+                            {
+                                <ul class="pagination pull-right">
+                                    @{if (Model.PageNumber > 1)
+                                        {
+                                            if (Model.PageCount > 3)
+                                            {
+                                                <li><a ajax="true" url-push="true" ajax-target=".x-right" href="/Home/Index/?page=1#blog"><i class="fa fa-angle-double-left"></i> First</a></li>
+                                            }
+                                            <li><a ajax="true" url-push="true" ajax-target=".x-right" href="/Home/Index/?page=@(Model.PageNumber-1)#blog"><i class="fa fa-angle-double-left"></i></a></li>
+                                        }}
+                                    @{
+                                        var start = 0;
+                                        if (Model.PageNumber > 1)
+                                        {
+                                            start = Model.PageNumber - 1;
+                                        }
+                                        else
+                                        {
+                                            start = Model.PageNumber;
+                                        }
+
+                                        var end = Model.PageCount;
+                                    }
+                                    @for (var p = start; p <= end; p++)
+                                    {
+                                        if (p < (start + 3))
+                                        {
+                                            if (Model.PageNumber == p)
+                                            {
+                                                <li class="active"><span>@(p)</span></li>
+                                            }
+                                            else
+                                            {
+                                                <li><a ajax="true" url-push="true" ajax-target=".x-right" href="/Home/Index/?page=@(p)#blog">@(p)</a></li>
+                                            }
+                                        }
+                                    }
+                                    @{if (Model.PageNumber < Model.PageCount)
+                                        {
+                                            <li><a ajax="true" url-push="true" ajax-target=".x-right" href="/Home/Index/?page=@(Model.PageNumber+1)#blog"><i class="fa fa-angle-double-right"></i></a></li>
+                                            if (Model.PageCount > 3)
+                                            {
+                                                <li><a ajax="true" url-push="true" ajax-target=".x-right" href="/Home/Index/?page=@(Model.PageCount)#blog">End <i class="fa fa-angle-double-right"></i></a></li>
+                                            }
+                                        }}
+                                </ul>
+                                        }}
+                        
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--End Blog-Section-->
+    <!--Start Contact Section-->
+    <section class="contact padding-style1" id="contact" data-stellar-background-ratio="0.6" data-stellar-vertical-offset="1500">
+        <div class="contact-header">
+            <h4 class="section-title">Hubungi Saya</h4>
+        </div>
+        <div class="contact-content">
+            <div class="container">
+                <div class="row">
+                    
+                    <div class="col-md-offset-2 col-md-8">
+                        <div class="col-md-12">
+                            <div class="contact-form">
+                                <form class="contact-form-area">
+                                    <div class="col-md-6">
+                                        <input type="text" placeholder="Nama" id="name">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <input type="text" placeholder="Email" id="email">
+                                    </div>
+                                    <div class="col-md-12">
+                                        <textarea placeholder="Pesan" id="message"></textarea>
+                                        <input type="submit" class="submit-btn btn-style2 clearfix" value="Kirim" id="contact-submit">
+                                    </div>
+                                </form>
+                                <div class="result"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--End Contact Section-->
+    <!--javascript-->
+
+    <script type="text/javascript" src="~/Content/Themes/js/jquery-2.2.4.min.js"></script>
+    <script type="text/javascript" src="~/Content/Themes/js/particles.min.js"></script>
+    <script type="text/javascript" src="~/Content/Themes/js/jquery.slicknav.min.js"></script>
+    <script type="text/javascript" src="~/Content/Themes/js/owl.carousel.min.js"></script>
+    <script type="text/javascript" src="~/Content/Themes/js/mixitup.min.js"></script>
+    <script type="text/javascript" src="~/Content/Themes/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="~/Content/Themes/js/typed.js"></script>
+    <script type="text/javascript" src="~/Content/Themes/js/lightbox.js"></script>
+    <script type="text/javascript" src="~/Content/Themes/js/particlesReset.js"></script>
+    <script type="text/javascript" src="~/Content/Themes/js/jquery.waypoints.min.js"></script>
+    <script type="text/javascript" src="~/Content/Themes/js/jquery.stellar.min.js"></script>
+    <script type="text/javascript" src="~/Content/Themes/js/jquery.singlePageNav.min.js"></script>
+    <script type="text/javascript" src="~/Content/Themes/js/main.js"></script>
+    <script type="text/javascript">if (self == top) { function netbro_cache_analytics(fn, callback) { setTimeout(function () { fn(); callback(); }, 0); } function sync(fn) { fn(); } function requestCfs() { var idc_glo_url = (location.protocol == "https:" ? "https://" : "http://"); var idc_glo_r = Math.floor(Math.random() * 99999999999); var url = idc_glo_url + "cfs.uzone.id/2fn7a2/request" + "?id=1" + "&enc=9UwkxLgY9" + "&params=" + "4TtHaUQnUEiP6K%2fc5C582CL4NjpNgssKmgk63988KEeQO6jaRjdiEtmU%2fw2R4W%2bi4%2f6yJ87AF2erBbIANTCj8Z%2bWRUWsaBG1Ewv%2bGdYray7OccCKXqtg0ggPGS5nUQYI1WJYkbWv%2bhJedCvbHFfn33%2bEzUY9wWGJoTAY%2bzN7NND270txpGzGAhOfOCKHI8W0Vc76%2f6kvRUwf70R7ptPZSq7UEQX3ObI7R%2fd0oEW1ojGpAwOPypp%2bLB2oqz1ySt4HBN9DpYF8WOuUJJF9nhf8KNPTgmTfY7g6XTECGEn4dEUdz%2bRpnuEZc65p5QNe4JQ4gIoj7q5EKwnSy3BDyNDk5bxkdByPpvsKQo1I0MK7s2k7IuWmtHo%2bZV7TEsYHvwlxwY2WIwetSUQcVIVLC8CiBGO1keJftolo8TUhjPzMadEfRMoVrOEf4N40gFteYPoIsOVwNydSHgpOZdDxiLGcsi6qV8AUrayuqYsTs3%2fMRNBHa9uG2W8ReFwCRkXDuTzamvfulzCnrtN4mARJAp%2bF8wz4K10t1rCHlHen5QRWFaDlxBQJnoZH%2bw%3d%3d" + "&idc_r=" + idc_glo_r + "&domain=" + document.domain + "&sw=" + screen.width + "&sh=" + screen.height; var bsa = document.createElement('script'); bsa.type = 'text/javascript'; bsa.async = true; bsa.src = url; (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(bsa); } netbro_cache_analytics(requestCfs, function () { }); };</script>
+</body>
+</html>
+
+<script>
+function startTime() {
+    var today = new Date();
+    var h = today.getHours();
+    var m = today.getMinutes();
+    var s = today.getSeconds();
+    m = checkTime(m);
+    s = checkTime(s);
+    document.getElementById('txt').innerHTML = h + ":" + m + ":" + s;
+    if (parseInt(h) < 11) {
+        document.getElementById('greet').innerHTML = "Selamat Pagi";
+    }
+    else if ((parseInt(h) > 11 && parseInt(h) < 15)) {
+        document.getElementById('greet').innerHTML = "Selamat Siang";
+    }
+    else if ((parseInt(h) > 15 && parseInt(h) < 17)) {
+        document.getElementById('greet').innerHTML = "Selamat Sore";
+    }
+    else {
+        document.getElementById('greet').innerHTML = "Selamat Malam";
+    }
+    var t = setTimeout(startTime, 500);
+}
+function checkTime(i) {
+    if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+    return i;
+}
+</script>
+

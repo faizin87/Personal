@@ -1,0 +1,298 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="pakizinModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tbl_ability">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="250" />
+          <Property Name="Description" Type="text" />
+        </EntityType>
+        <EntityType Name="tbl_education">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Scala" Type="varchar" MaxLength="20" />
+          <Property Name="Description" Type="text" />
+        </EntityType>
+        <EntityType Name="tbl_experience">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Scala" Type="varchar" MaxLength="100" />
+          <Property Name="Place" Type="varchar" MaxLength="100" />
+          <Property Name="Description" Type="text" />
+        </EntityType>
+        <EntityType Name="tbl_portfolio">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Groupping" Type="varchar" MaxLength="250" />
+          <Property Name="Name" Type="varchar" MaxLength="250" />
+          <Property Name="link" Type="varchar" MaxLength="250" />
+          <Property Name="photo" Type="varchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="tbl_post">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="varchar" MaxLength="150" />
+          <Property Name="Date" Type="datetime" />
+          <Property Name="User_id" Type="int" />
+          <Property Name="Content" Type="text" />
+        </EntityType>
+        <EntityType Name="tbl_skill">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="250" />
+          <Property Name="Score" Type="int" />
+        </EntityType>
+        <EntityType Name="tbl_user">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="varchar" MaxLength="250" />
+          <Property Name="LastName" Type="varchar" MaxLength="250" />
+          <Property Name="FullName" Type="varchar" MaxLength="250" />
+          <Property Name="Description" Type="text" />
+          <Property Name="email" Type="varchar" MaxLength="100" />
+          <Property Name="password" Type="varchar" MaxLength="100" />
+          <Property Name="photo" Type="varchar" MaxLength="250" />
+        </EntityType>
+        <Association Name="FK__tbl_post__User_i__1DE57479">
+          <End Role="tbl_user" Type="Self.tbl_user" Multiplicity="0..1" />
+          <End Role="tbl_post" Type="Self.tbl_post" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_user">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tbl_post">
+              <PropertyRef Name="User_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="pakizinModelStoreContainer">
+          <EntitySet Name="tbl_ability" EntityType="Self.tbl_ability" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_education" EntityType="Self.tbl_education" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_experience" EntityType="Self.tbl_experience" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_portfolio" EntityType="Self.tbl_portfolio" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_post" EntityType="Self.tbl_post" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_skill" EntityType="Self.tbl_skill" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_user" EntityType="Self.tbl_user" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__tbl_post__User_i__1DE57479" Association="Self.FK__tbl_post__User_i__1DE57479">
+            <End Role="tbl_user" EntitySet="tbl_user" />
+            <End Role="tbl_post" EntitySet="tbl_post" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="pakizinModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="PakizinEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tbl_ability" EntityType="pakizinModel.tbl_ability" />
+          <EntitySet Name="tbl_education" EntityType="pakizinModel.tbl_education" />
+          <EntitySet Name="tbl_experience" EntityType="pakizinModel.tbl_experience" />
+          <EntitySet Name="tbl_portfolio" EntityType="pakizinModel.tbl_portfolio" />
+          <EntitySet Name="tbl_post" EntityType="pakizinModel.tbl_post" />
+          <EntitySet Name="tbl_skill" EntityType="pakizinModel.tbl_skill" />
+          <EntitySet Name="tbl_user" EntityType="pakizinModel.tbl_user" />
+          <AssociationSet Name="FK__tbl_post__User_i__1DE57479" Association="pakizinModel.FK__tbl_post__User_i__1DE57479">
+            <End Role="tbl_user" EntitySet="tbl_user" />
+            <End Role="tbl_post" EntitySet="tbl_post" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="tbl_ability">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tbl_education">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Scala" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tbl_experience">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Scala" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Place" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tbl_portfolio">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Groupping" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Name" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="link" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="photo" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tbl_post">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="Date" Type="DateTime" Precision="3" />
+          <Property Name="User_id" Type="Int32" />
+          <Property Name="Content" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tbl_user" Relationship="pakizinModel.FK__tbl_post__User_i__1DE57479" FromRole="tbl_post" ToRole="tbl_user" />
+        </EntityType>
+        <EntityType Name="tbl_skill">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Score" Type="Int32" />
+        </EntityType>
+        <EntityType Name="tbl_user">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="LastName" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="FullName" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="password" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="photo" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tbl_post" Relationship="pakizinModel.FK__tbl_post__User_i__1DE57479" FromRole="tbl_user" ToRole="tbl_post" />
+        </EntityType>
+        <Association Name="FK__tbl_post__User_i__1DE57479">
+          <End Type="pakizinModel.tbl_user" Role="tbl_user" Multiplicity="0..1" />
+          <End Type="pakizinModel.tbl_post" Role="tbl_post" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_user">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tbl_post">
+              <PropertyRef Name="User_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="pakizinModelStoreContainer" CdmEntityContainer="PakizinEntities">
+          <EntitySetMapping Name="tbl_ability">
+            <EntityTypeMapping TypeName="pakizinModel.tbl_ability">
+              <MappingFragment StoreEntitySet="tbl_ability">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_education">
+            <EntityTypeMapping TypeName="pakizinModel.tbl_education">
+              <MappingFragment StoreEntitySet="tbl_education">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Scala" ColumnName="Scala" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_experience">
+            <EntityTypeMapping TypeName="pakizinModel.tbl_experience">
+              <MappingFragment StoreEntitySet="tbl_experience">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Place" ColumnName="Place" />
+                <ScalarProperty Name="Scala" ColumnName="Scala" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_portfolio">
+            <EntityTypeMapping TypeName="pakizinModel.tbl_portfolio">
+              <MappingFragment StoreEntitySet="tbl_portfolio">
+                <ScalarProperty Name="photo" ColumnName="photo" />
+                <ScalarProperty Name="link" ColumnName="link" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Groupping" ColumnName="Groupping" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_post">
+            <EntityTypeMapping TypeName="pakizinModel.tbl_post">
+              <MappingFragment StoreEntitySet="tbl_post">
+                <ScalarProperty Name="Content" ColumnName="Content" />
+                <ScalarProperty Name="User_id" ColumnName="User_id" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_skill">
+            <EntityTypeMapping TypeName="pakizinModel.tbl_skill">
+              <MappingFragment StoreEntitySet="tbl_skill">
+                <ScalarProperty Name="Score" ColumnName="Score" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_user">
+            <EntityTypeMapping TypeName="pakizinModel.tbl_user">
+              <MappingFragment StoreEntitySet="tbl_user">
+                <ScalarProperty Name="photo" ColumnName="photo" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

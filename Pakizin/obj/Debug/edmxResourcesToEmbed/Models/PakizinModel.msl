@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="pakizinModelStoreContainer" CdmEntityContainer="PakizinEntities">
+    <EntitySetMapping Name="tbl_ability">
+      <EntityTypeMapping TypeName="pakizinModel.tbl_ability">
+        <MappingFragment StoreEntitySet="tbl_ability">
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_education">
+      <EntityTypeMapping TypeName="pakizinModel.tbl_education">
+        <MappingFragment StoreEntitySet="tbl_education">
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Scala" ColumnName="Scala" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_experience">
+      <EntityTypeMapping TypeName="pakizinModel.tbl_experience">
+        <MappingFragment StoreEntitySet="tbl_experience">
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Place" ColumnName="Place" />
+          <ScalarProperty Name="Scala" ColumnName="Scala" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_portfolio">
+      <EntityTypeMapping TypeName="pakizinModel.tbl_portfolio">
+        <MappingFragment StoreEntitySet="tbl_portfolio">
+          <ScalarProperty Name="photo" ColumnName="photo" />
+          <ScalarProperty Name="link" ColumnName="link" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Groupping" ColumnName="Groupping" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_post">
+      <EntityTypeMapping TypeName="pakizinModel.tbl_post">
+        <MappingFragment StoreEntitySet="tbl_post">
+          <ScalarProperty Name="Content" ColumnName="Content" />
+          <ScalarProperty Name="User_id" ColumnName="User_id" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_skill">
+      <EntityTypeMapping TypeName="pakizinModel.tbl_skill">
+        <MappingFragment StoreEntitySet="tbl_skill">
+          <ScalarProperty Name="Score" ColumnName="Score" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_user">
+      <EntityTypeMapping TypeName="pakizinModel.tbl_user">
+        <MappingFragment StoreEntitySet="tbl_user">
+          <ScalarProperty Name="photo" ColumnName="photo" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="FullName" ColumnName="FullName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
